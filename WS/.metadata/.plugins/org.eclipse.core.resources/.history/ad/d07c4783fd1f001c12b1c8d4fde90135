@@ -1,0 +1,18 @@
+package com.cts.j8f.ui;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class App01 {
+
+	public static void main(String[] args) {
+
+		LocalDateTime rightNow = LocalDateTime.now();
+		System.out.println(rightNow);
+		
+		ZonedDateTime singapureTime = ZonedDateTime.now(ZoneId.of("GMT+8"));
+		System.out.println(singapureTime);
+	}
+
+}
