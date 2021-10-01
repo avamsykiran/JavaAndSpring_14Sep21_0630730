@@ -604,15 +604,100 @@ Java 8 Features
 
     java.util.stream
 
+        Stream      is a flow of data.
 
+        Collection / Array  -------------Stream------------------------ Consume / Collect into another collection
+
+        Rain Water -----Mesh Filter-----Membraine------Chloride-------  Over Head Water Tank
+
+
+        Collection::stream
+        Arrays::stream
+        Stream.of(,,,,)
+
+            Terminal Stream Operators
+
+                forEach(Consumer)               void
+                reduce(BinaryOperator)          java.util.Optional
+
+                            BinaryOperator<Integer> sum = (n1,n2) -> n1+n2;
+                            Stream.of(1,2,3,4,5).reduce(sum); // sum(sum(sum(sum(1,2),3),4),5)
+
+                collect(Collector)              List/Set/Map
+
+                        collect all the data in the stream into a List/Set/Map
+
+                            Collectors.toList()
+                            Collectors.toSet()
+                            Collectors.toMap(keyMapper,valueMapper)
+
+            Intermediate Stream Operators
+
+                        filter(Predicate)        Stream
+                        map(Operator)            Stream
+                        
 Jdbc
 -------------------------------------------
 
+    Java Database Connectivity
+
+    RDBMS  <--DRIVER---->  <----JDBC----->   Java Application
+
+    is a specification (declaration with no implementation).
+        jdbc drivers are the vendor provided implementations for the JDBC
+
+    Oracle              <-Oracle Thin Driver-->
+    MySQL Server        <-MySQL ConnectorJ -->  <----JDBC----->   Java Application
+    Ms SQL Server       <-Ms Jet Drivers   -->
 
     
+    Jdbc 4.0 (java.sql)
+    -----------------------
 
+        Step 1:
+                Ensure that the driver is available in the class path,
+                or we can install them using a build tool - Maven
+
+        Step 2:
+                Connection con = DriverManager.getConnection(dbUrl,uid,pwd);
             
-                    
+                dbUrl or called connection string is the where abouts of the database
+
+                    oracle      jdbc:oracle:thin:@localhost:1521:XE
+                    mysql       jdbc:mysql://localhost:3306/databaseName
+
+        Step 3:
+                Collect Database Metadata
+
+                            DatabaseMetaData dbmd = con.getMetadata();
+
+                Execute DDL/DML/DRL
+
+                            Statement st = con.createStatement();
+
+                            boolean st.execute("create or alter or drop query");
+                            int st.executeUpdate("insert or update or delete query");
+                            ResultSet st.executeQuery("select query");
+
+                            PreparedStatement pst1 = con.prepareStatement("create or alter or drop query");
+                            PreparedStatement pst2 = con.prepareStatement("insert or update or delete query");
+                            PreparedStatement pst3 = con.prepareStatement("select query");
+
+                            boolean pst1.execute();
+                            int pst2.executeUpdate();
+                            ResultSet pst3.executeQuery();
+
+                                setInt
+                                setFloat
+                                SetString .....
+
+                Call a Procedure or a Function
+
+                            CallableStatement cst = con.prepareCall("procedure or fucntion call");
+
+                            cst.execute();
+
+                
 
                     
                     
