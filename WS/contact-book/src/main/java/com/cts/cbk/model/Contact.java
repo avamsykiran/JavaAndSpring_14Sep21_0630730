@@ -10,7 +10,7 @@ public class Contact implements Comparable<Contact> {
 	private String mobile;
 	private LocalDate dateOfBirth;
 
-	Contact() {
+	public Contact() {
 	}
 
 	public Contact(Long cid, String fullName, String email, String mobile, LocalDate dateOfBirth) {
