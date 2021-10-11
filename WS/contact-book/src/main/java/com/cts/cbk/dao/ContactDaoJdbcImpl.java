@@ -41,6 +41,7 @@ public class ContactDaoJdbcImpl implements ContactDao {
 			}
 
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			// log these exceptions here....
 			throw new ContactBookException("Unable to fetech the data!");
 		}
@@ -69,6 +70,7 @@ public class ContactDaoJdbcImpl implements ContactDao {
 			}
 
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			// log these exceptions here....
 			throw new ContactBookException("Unable to fetech the data!");
 		}
@@ -90,6 +92,7 @@ public class ContactDaoJdbcImpl implements ContactDao {
 			pst.executeUpdate();
 			
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			// log these exceptions here....
 			throw new ContactBookException("Unable to save the data!");
 		}
@@ -111,6 +114,7 @@ public class ContactDaoJdbcImpl implements ContactDao {
 			pst.executeUpdate();
 			
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			// log these exceptions here....
 			throw new ContactBookException("Unable to save the data!");
 		}
@@ -127,6 +131,7 @@ public class ContactDaoJdbcImpl implements ContactDao {
 			pst.executeUpdate();
 			
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			// log these exceptions here....
 			throw new ContactBookException("Unable to delete the data!");
 		}
