@@ -698,9 +698,108 @@ Jdbc
                             cst.execute();
 
                 
+    JPA with Hibernate
+    ------------------------------------------------
 
+        Java Persistence API
+
+        is an ORM (Object Relational Mapping) specification
                     
-                    
+                          OOP                       RDBMS
+
+        Entity Def      class                       table schema
+        Entity          object                      record/row
+        Property        field                       column/attribute          
+        Behaviour       method                      =--------
+
+        Relationship
+            Is A        inheretence                 Single-Table        allemps [ empid,name,basic,hra ]
+                                                    Join-Table          emps [ empid,name,basic]  managers[empid,hra]
+                        class Employee{             Table-Per-Class     onlyemps [empid,name,basic]
+                            int empid;                                  onlymanagers [empid,name,basic,hra]
+                            String name;
+                            double basic;
+                        }
+
+                        class Manager extends Employee{
+                            double hra;
+                        }
+
+
+            Has A(Aggregation)
+                Composition                             Single Table    Emp [empid,name,basic,doorNo,street]
+                                class Address {
+                                    Stirng doorNo;
+                                    String street;
+                                }
+
+                                class Employee {
+                                    int empId;
+                                    String name;
+                                    String basic;
+                                    Address address;
+                                }
+
+                Assosiations    
+                  OneToOne      class BankAccount {     Joins       empid of Emp table 
+                                    String accNum;                  will be a foreign key in bankaccoutns table
+                                    String ifsc;
+                                    Employee holder;
+                                }
+
+                                class Employee {
+                                    int empId;
+                                    String name;
+                                    String basic;
+                                    BankAccount salAccount;
+                                }
+
+                  OneToMany     class Department {        Joins     deptId from depts table will be 
+                  ManyToOne         int deptId;                     the foriegn key in emps table
+                                    String deptName;
+                                    Set<Employee> emps;
+                                }
+
+                                class Employee {
+                                    int empid;
+                                    String name;
+                                    double basic;
+                                    Department dept;
+                                }
+
+                   ManyToMany   class Project {           Joins via thrid table
+                                    int prjId;                      proejcts [ prjid, prjTitle ]
+                                    String prjTitle;                emps [empid,name,basic]
+                                    Set<Employee> team;             prjemps [ prjid,empid ]
+                                }
+
+                                class Employee {
+                                    int empid;
+                                    String name;
+                                    double basic;
+                                    Set<Project> projects;
+                                }
+
+
+                                class Project {                          proejcts [ prjid, prjTitle ]
+                                    int prjId;                           emps [empid,name,basic]
+                                    String prjTitle;                     contributions [ prjid,empid ]
+                                    Set<Contribution> contributions;
+                                }
+
+                                class Employee {
+                                    int empId;
+                                    String name;
+                                    double basic;
+                                    Set<Contribution> contributions;
+                                }
+
+                                class Contribution {
+                                    Project project;
+                                    Employee contributor;
+                                    String role;
+                                }
+               
 
 
                     
