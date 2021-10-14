@@ -710,7 +710,7 @@ Jdbc
         Entity Def      class                       table schema
         Entity          object                      record/row
         Property        field                       column/attribute          
-        Behaviour       method                      =--------
+        Behaviour       method                      --------
 
         Relationship
             Is A        inheretence                 Single-Table        allemps [ empid,name,basic,hra ]
@@ -780,7 +780,6 @@ Jdbc
                                     Set<Project> projects;
                                 }
 
-
                                 class Project {                          proejcts [ prjid, prjTitle ]
                                     int prjId;                           emps [empid,name,basic]
                                     String prjTitle;                     contributions [ prjid,empid ]
@@ -799,7 +798,78 @@ Jdbc
                                     Employee contributor;
                                     String role;
                                 }
-               
+            
+        
+        JPA and JTA is the ORM adopted by Java and hence JPA is a specification (declartion).
+        JPA impleemntations or providers:
+                Hibernate
+                iBates
+                ...etc
+
+        RDBMS  <--DRIVER->  <-JDBC->  <-Hibernate->  <-JPA->  Java Application
+
+            Java Persistence API        javax.persistence
+            Java Transaction API        javax.persistence, javax.transaction
+
+                1. Configuaration
+                    inform the JPA provider details like, driver,connection string username and password.
+
+                2. JPA/JTA Annotation based Mapping
+                                                Level
+                                                -------------------------
+                    @Entity                     class
+                    @Table(name="")             class
+
+                    @Inheretence(strategy="")   class
+                    @DescriminatorColumn        class
+                    @DescrimiantorValue         class
+
+                    @Id                         Field
+                    @GeneratedValue             Field
+                    @Column(name="")            Field
+                    @Transiant                  Field
+
+                    @OneToOne                   Field
+                    @OneToMany                  Field
+                    @ManyToOne                  Field
+                    @ManyToMany                 Field
+
+                    @JoinColumn                 Field
+
+        JPA API
+        -----------------------------
+
+            EntityManagerFactory
+
+            EntityManager
+                persist             insertion
+                merge               updation
+                find                get by id
+                delete              deletion
+                createQquery
+                getTransaction
+                flush
+                close
+
+        JPA Entity LifeCycle
+        --------------------------------------
+            
+            Transiant
+                                Entity e = new Entity();
+
+            Persistant
+                                em.persist(e)       Entity e = em.find(Entity.class,id)
+                                                    em.merge(e)
+
+            Detached
+                                em.remove(e)
+
+                                em.flush()
+
+                                em.close()
+
+        
+
 
 
                     
