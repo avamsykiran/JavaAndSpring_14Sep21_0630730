@@ -1,12 +1,15 @@
 package com.cts.jd.entity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,14 +27,17 @@ public class Employee {
 	@Embedded
 	private Address address;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	private BankAccount salAccount;
+	
+	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+	private Set<Skill> skills;
 	
 	public Employee() {}
 
 	public Employee(Long empId, String fullName, Double salary, LocalDate joinDate, Address address,
-			BankAccount salAccount) {
+			BankAccount salAccount,Set<Skill> skills) {
 		super();
 		this.empId = empId;
 		this.fullName = fullName;
@@ -39,6 +45,7 @@ public class Employee {
 		this.joinDate = joinDate;
 		this.address = address;
 		this.salAccount = salAccount;
+		this.skills=skills;
 	}
 
 
@@ -90,10 +97,19 @@ public class Employee {
 		this.salAccount = salAccount;
 	}
 
+	public Set<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Set<Skill> skills) {
+		this.skills = skills;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", fullName=" + fullName + ", salary=" + salary + ", joinDate=" + joinDate
-				+ ", address=" + address + ", salAccount=" + salAccount + "]";
-	}	
+				+ ", address=" + address + ", salAccount=" + salAccount + ", skills=" + skills + "]";
+	}
+
 	
 }
