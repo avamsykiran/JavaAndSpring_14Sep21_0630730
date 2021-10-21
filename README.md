@@ -868,9 +868,91 @@ Jdbc
 
                                 em.close()
 
+    Spring Framework
+    ------------------------------------------------
+
+        Java Framework offering a wide range of modules 
+        each address a specific Enterprise Level Solution.
+
+        Spring Core                     DI (Dependency Injection)  IoC (Inversion of Control) - BeanFactory
+        Spring Context                  ApplicationContext - AutoWiring
+        Spring SpEL                     Spring Expresion Language - Externalized Configuaration
+        Spring Boot                     Auto Configuaration - Rapid Application Development
+        Spring Web (MVC/REST)           MVC Design Pattern Baed Web applications or REST webservices
+        Spring Data                     Auto Implementation of Repositories
         
+        Spring Test                     Testing on Spring Application
+
+        Spring AOP                      Aspect Oriented Programming
+        Spring Security                 Autherization and Authetencation 
+        
+        ,....etc
+     
+    Lab Setup
+    -----------------------------------------------------
+        JDK 1.8
+        STS Spring Tool Suite
+        Oracle
+
+    Spring Core and Spring Context
+    ----------------------------------------------------------------------
+
+        Dependency Injection
+
+            interface Dao{
+                ....
+            }
+
+            class DaoJdbcImpl implements Dao{
+                ......
+            }
+
+            class DaoJpaImpl implements Dao{
+                ......
+            }
+
+            interface Service {
+                .....
+            }
+
+            class ServiceImpl implements Service{
+                private Dao dao;
+
+                public ServiceImpl(Dao dao){        //constructor injection
+                    this.dao = dao;
+                }
+                ....
+
+                public void setDao(Dao dao){        //setter injection
+                    this.dao=dao;
+                }
+            }
 
 
+        Context         is the server that creates and manges beans and supplies them on demand.
+        Component       is any class that represents a logic rather than data holder like 
+                            daos,controllers, services ..etc
+        Bean            is an object of a component that being created, manged and supplied by a context.
 
                     
+        Bean Configuaration     is to inform the context 
+                                        1. how many components do we have
+                                        2. how many beans do we need
+                                        3. how are teh beans dependent on one-another
 
+            Xml Based Bean Configuaration
+            Annotation Based Bean Configuaration
+            Java Based Bean Configuaration
+
+        Annotation Based Bean Configuaration
+
+            @Component
+                @Service
+                @Repository
+                @Controller
+                @RestController
+                @ControllerAdvice
+                ...etc
+
+            @Configuaration
+            @ComponentScan("basePackage")
