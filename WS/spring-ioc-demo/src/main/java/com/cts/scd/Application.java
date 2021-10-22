@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.cts.scd.service.GreetService;
+import com.cts.scd.ui.MainView;
 
 public class Application {
 
@@ -13,8 +14,8 @@ public class Application {
 		ApplicationContext context = 
 				new AnnotationConfigApplicationContext(AppConfiguaration.class);
 		
-		GreetService gs1 = (GreetService) context.getBean("gssi");
-		System.out.println(gs1.greetUser("Vamsy"));
+		MainView view = (MainView) context.getBean("mainView");
+		view.run();
 	}
 
 }

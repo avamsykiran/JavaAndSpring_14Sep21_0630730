@@ -938,7 +938,7 @@ Jdbc
         Bean Configuaration     is to inform the context 
                                         1. how many components do we have
                                         2. how many beans do we need
-                                        3. how are teh beans dependent on one-another
+                                        3. how are the beans dependent on one-another
 
             Xml Based Bean Configuaration
             Annotation Based Bean Configuaration
@@ -956,3 +956,23 @@ Jdbc
 
             @Configuaration
             @ComponentScan("basePackage")
+
+            @Value              externalized configuaration through SpEL
+            @PropertySource
+
+            @Autowired          autowire by type
+            @Primary
+            @Qualifier          autowire by name
+
+                            @Autowired
+                            private Type bean;      ///field injection
+                            -----------------------------------------------------
+                            @Autowired
+                            public ParentType(Type bean){       //constructor injection
+                                this.bean=bean;
+                            }
+                            --------------------------------------------------------
+                            @Autowired
+                            public void setBean(Type bean){       //setter injection
+                                this.bean=bean;
+                            }
