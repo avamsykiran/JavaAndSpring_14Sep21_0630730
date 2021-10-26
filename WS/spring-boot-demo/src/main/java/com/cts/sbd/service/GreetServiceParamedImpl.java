@@ -1,0 +1,17 @@
+package com.cts.sbd.service;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service("gspi")
+public class GreetServiceParamedImpl implements GreetService {
+
+	@Value("${greet.note:Hai}")
+	private String greetNote;
+	
+	@Override
+	public String greetUser(String userName) {
+		return String.format("%s %s", greetNote,userName);
+	}
+
+}

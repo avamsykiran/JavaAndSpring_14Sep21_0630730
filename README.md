@@ -976,3 +976,105 @@ Jdbc
                             public void setBean(Type bean){       //setter injection
                                 this.bean=bean;
                             }
+
+        Java Based Bean Configuaration
+    
+        @Configuaration
+        public class MyConfig{
+            @Bean
+            public LocalDateTime currentTime(){
+                return LocalDateTime.now();
+            }
+        }
+
+        Bean Scope
+    
+            @Scope
+                        singleton
+                        prototype
+                        request
+                        session
+                        global-session
+
+    Spring Boot
+    ----------------------------------------------------------------------
+
+        is a spring module that offers Auto Configuaration and enables RAD (Rapid Application Development)
+
+                Spring Web
+                    1. map all incoming request to a servlet called DispatcherServlet
+                    2. configuare a ViewResolver
+                    3. configuare a RequestHandler
+                    4. configuare the CORS policies
+                    5. configuare WebConfiguarationAdapter (web.xml)
+
+                Spring Data
+                    1. Configuare the datasource proeprties
+                    2. Configuare the Jpa and Hibernate as aprovider
+                    3. Configuare the hibernate proeprties
+
+                Spring Security
+                    1. Configaure the authentication mode
+                    2. Configaure the roles
+                    3. Configuare the authorization rules
+                    4. Configuare the UserNAem,passwords.
+
+            If we use spring boot along with these modules, those minimum configs will come
+            ready-made.
+
+        Spring boot also offers embeded servers. as a result it eanbles server-less application.
+
+        Spring Boot uses externalized config (application.properties) for customizing the configuarations.
+
+        @SpringBootApplication  =   @Configuaration
+                                    @EnableAutoConfiguaration
+                                    @ComponentScan
+                                    @PropertySource
+
+        Spring Boot Project (Spring Starter Project) can be initialized
+        ----------------------------------------------------------------------
+            1. SpringInitializer start.spring.io
+            2. Spring Starter Project Wizard from STS
+            3. Spring Boot CLI
+                    spring init
+
+                            
+    Spring Data JPA
+    ----------------------------------------------------------------------
+
+        is a spring module that offers automatic dynamic implementation of a JPA based repository (dao).
+
+        CrudRepository
+            JpaRepoistory
+
+        @Entity
+        public class Employee {
+
+            @Id
+            @GeneratedValue
+            private Long empId;
+            private String name;
+            private String emailId;
+            private Double basic;
+
+            //construcotr,setter and getters
+        }
+        
+        @Repository
+        public interface EmployeeRepo extends JpaRepository<Employee,Long>{
+
+        }
+        
+        spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+        spring.datasource.username=root
+        spring.datasource.password=root
+        spring.datasource.url=jdbc:mysql://localhost:3306/empDB?createDatabaseIfNotExist=true
+        spring.jpa.hibernate.ddl-auto=update
+
+        spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+        spring.datasource.username=hr
+        spring.datasource.password=hr
+        spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
+        spring.jpa.hibernate.ddl-auto=update
+
+

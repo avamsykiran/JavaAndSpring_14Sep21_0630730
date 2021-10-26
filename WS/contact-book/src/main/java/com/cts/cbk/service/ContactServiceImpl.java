@@ -22,7 +22,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 	
 	private boolean isValidFullName(String fullName) {
-		return fullName!=null && fullName.matches("[A-Z][a-z\s]{4,49}");
+		return fullName!=null && fullName.matches("[A-Z][a-z\\s]{4,49}");
 	}
 	
 	private boolean isValidMobile(String mobile) {

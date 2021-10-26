@@ -1,5 +1,7 @@
 package com.cts.scd.ui;
 
+import java.util.Scanner;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -8,6 +10,10 @@ import com.cts.scd.service.GreetService;
 
 @Component
 public class MainView {
+	
+	@Autowired
+	@Qualifier("kbin")
+	private Scanner kbin;
 
 	@Autowired
 	@Qualifier("gssi")
@@ -27,9 +33,13 @@ public class MainView {
 	
 	public void run() {
 		System.out.println("Application Initiated");
-		System.out.println(greetService1.greetUser("Vamsy"));
-		System.out.println(greetService2.greetUser("Vamsy"));
-		System.out.println(greetService3.greetUser("Vamsy"));
-		System.out.println(greetService4.greetUser("Vamsy"));
+		
+		System.out.print("User Name:> ");
+		String userName = kbin.nextLine();
+		
+		System.out.println(greetService1.greetUser(userName));
+		System.out.println(greetService2.greetUser(userName));
+		System.out.println(greetService3.greetUser(userName));
+		System.out.println(greetService4.greetUser(userName));
 	}
 }
