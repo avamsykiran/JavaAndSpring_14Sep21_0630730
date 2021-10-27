@@ -1057,12 +1057,18 @@ Jdbc
             private String emailId;
             private Double basic;
 
-            //construcotr,setter and getters
+            //constructor,setter and getters
         }
         
         @Repository
         public interface EmployeeRepo extends JpaRepository<Employee,Long>{
 
+            boolean existsByEmailId(String emailId);
+            Employee findByEmailId(String emailId);
+            List<Employee> findAllByName(String name);
+
+            @Query("SELECT e FROM Employee e WHERE e.basic between :lowerBound and :upperBound")
+            List<Employee> getAllInBasicRange(Double lowerBound,Double upperBound);
         }
         
         spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
