@@ -1083,4 +1083,75 @@ Jdbc
         spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
         spring.jpa.hibernate.ddl-auto=update
 
+    Spring Web
+    ----------------------------------------------------------------------
+
+        Dynamic Web Applciations based on Single Front Controller Design Pattern
+        REST api (RESTful WebServices)
+
+        Dynamic Web Appliction
+        --------------------------
+
+            On the web server, we will have a program which when recieves a requests, will
+            generate a html content and the generated html content is passed 
+            back in the response to the client.
+
+            Servlet and JSPs 
+            -----------------------------
+                Servlet         is a java class that can process a req and generate a response.
+                JSP             is a java server page, this is a view engine (Java embeded into html)
+
+                MVC Design Pattern
+                ---------------------
+                Model           is a java class (POJO) that encapsualte data and is shipped between views and 
+                                controllers
+                View            is a .tml / .jsp or any other page
+                Controller      is a class that recevies the req and generates the response, typically a Servlet
+
+
+                    Web Server (tomcat)                                                     WebClient(Chrome)
+                    ----------------------------------------                                ------------------
+
+                        DynamicWebApplciation   (contextUrl)
+
+      Database  <--->  Dao /Repo  <---> Service  <---> Controller   <---------REQUEST---------
+                                                            |
+                                                            |(model)
+                                                            ↓
+                                                          View      ---------RESPONSE---------->
+
+                Servlets API (specification)
+                -----------------------------
+
+                    javax.servlet
+                        GenericServlet      class
+                            void service(ServletRequest,ServletResponse);
+                            ServletContext getServletContext()
+                            ServletConfig getServletConfig()
+
+                        ServletContext      interface       represents the webApplciation as a whole
+                        ServletConfig       interface       represent local data of a particular servlet
+                        ServletRequest      interface
+                        ServletResponse     interface
+
+                    javax.servlet.http
+                        HttpServlet         class           extends GenericServlet
+                            void doGet(HttpServletReqeust,HttpServletResponse)
+                            void doPost(HttpServletReqeust,HttpServletResponse)
+
+                        HttpServletReqeust  interface
+
+                            String getParameter(String name);
+
+                        HttpServletResponse interface
+
+                            void setContentType(String contentType);
+                            PrintWriter getWriter();
+
+                        HttpSession
+                        Cookie
+                        ReqeustDispatcher
+
+                
+
 
