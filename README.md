@@ -1152,6 +1152,15 @@ Jdbc
                         Cookie
                         ReqeustDispatcher
 
-                
+            Raising a request from a browser
+            ---------------------------------------------
+                1. Type a url in the browser                GET to the url
+                2. Click a link on the current page         GET to the url
+                3. Submit a form                            depending on the 'method' attribute 
+                                                            of the <form></form>
+                                                            either GET/POST tot he url is raised.
+
+
+
 
 
