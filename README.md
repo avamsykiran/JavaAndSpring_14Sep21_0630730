@@ -1159,6 +1159,42 @@ Jdbc
                 3. Submit a form                            depending on the 'method' attribute 
                                                             of the <form></form>
                                                             either GET/POST tot he url is raised.
+            
+            WebServers are ServletContainers as well, as they manage the creation
+            and lifecycle of Servlet objects.
+
+                Servlet LifeCycle
+
+                    constructor()
+                        init()
+                        doget()/doPost()    <-------------  Req
+                                            --------------> Resp
+                        destroy()
+
+            JSP - Java Server Pages
+            ---------------------------------------------
+                a .jsp page is a html page embeded with java code.
+
+                that allows me to handle data and generate html dynamically.
+
+                JSP Elements
+                --------------------------
+                    Directives          <%@ directiveName attrib="value" %>
+                                            page        
+                                            taglib
+                                            include
+
+                    Declaratives        <%! declarations; %>        field variable declarations
+
+                    Expressions         <%=javaExpression %>
+
+                    Scriplets           <% javaCodeSnippet %>
+                    
+                    Actions             <jsp:actionName attrib="value" />
+                                            include
+                                            forward
+                                            useBean
+
 
 
 
