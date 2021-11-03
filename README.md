@@ -1194,9 +1194,22 @@ Jdbc
                                             include
                                             forward
                                             useBean
+            
 
+                JSP implicit objects
+                -------------------------------------
 
+                appliction          ServletContext
+                page                PageContext
+                config              ServletConfig
+                out                 JspWriter
+                                        <% out.print("something"); %>
+                                        <%="something"%>                
+                request             HttpServletRequest
+                response            HttpServletResponse
+                session             HttpSeesion
 
+                
 
 
 
