@@ -1194,7 +1194,6 @@ Jdbc
                                             include
                                             forward
                                             useBean
-            
 
                 JSP implicit objects
                 -------------------------------------
@@ -1210,6 +1209,32 @@ Jdbc
                 session             HttpSeesion
 
                 
+                application vs session vs reqeust attributes
+                ------------------------------------------------------------
+                
+                    request.setAttribute(key,object)
+                    request.getAttribute(key)
+                    request.removeAttribute(key)
 
+                    HttpSession session = request.getSession();
+                        //session is a temporary memory block allocated for each user
+                        //of a web application on the server, when the first request from that
+                        //user hits the server
+                        //every session has an expiry time and as and when the successive req from
+                        //the user hits the server within the expirty time, the session extends, else
+                        //it expiries.
+                    
+                    session.setAttribute(key,object)
+                    session.getAttribute(key)
+                    session.removeAttribute(key)
 
+                    session.setMaxInactiveInterval(long ms);
+                    session.getMaxInactiveInterval();
+                    session.abandon(); 
 
+                    session.getSessionId();
+
+                    ServletContext application = getServletContext();
+                    application.setAttribute(key,object)
+                    application.getAttribute(key)
+                    application.removeAttribute(key)
