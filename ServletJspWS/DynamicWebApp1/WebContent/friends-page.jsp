@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <%@page import="java.util.List"%>
 <jsp:include page="header.jsp" />
@@ -7,30 +8,28 @@
 	<button>SEND</button>
 </form>
 
-<% List<String> friends = (List<String>) request.getAttribute("flist"); %>
-<% if (friends != null) {  %>
+<c:if test="${flist != null}">
 	<ol>
-		<% for(String f : friends) { %>
-			<li><%=f %></li>
-		<%} %>
+		<c:forEach var="f" items="${flist }">
+			<li>${f }</li> 
+		</c:forEach>
 	</ol>
-<% } %>
+</c:if>
 
-<% List<String> friends2 = (List<String>) session.getAttribute("flist2"); %>
-<% if (friends2 != null) {  %>
+<c:if test="${flist2 != null}">
 	<ol>
-		<% for(String f : friends2) { %>
-			<li><%=f %></li>
-		<%} %>
+		<c:forEach var="f" items="${flist2 }">
+			<li>${f }</li> 
+		</c:forEach>
 	</ol>
-<% } %>
+</c:if>
 
-<% List<String> friends3 = (List<String>) application.getAttribute("flist3"); %>
-<% if (friends3 != null) {  %>
+<c:if test="${flist3 != null}">
 	<ol>
-		<% for(String f : friends3) { %>
-			<li><%=f %></li>
-		<%} %>
+		<c:forEach var="f" items="${flist3 }">
+			<li>${f }</li> 
+		</c:forEach>
 	</ol>
-<% } %>
+</c:if>
+ 
 <jsp:include page="footer.jsp" />

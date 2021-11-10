@@ -1238,3 +1238,115 @@ Jdbc
                     application.setAttribute(key,object)
                     application.getAttribute(key)
                     application.removeAttribute(key)
+
+                EL (Expression Language)
+                ------------------------------------------------------------
+                
+                    <% String msg = (String) request.getAttribute("msg"); %>
+                    <%=msg %>
+
+                    ${msg} //retrive from appliction ?? retrive from session ?? retrive from req
+
+                    <% Employee e = (Employee) request.getAttribute("emp"); %>
+                    <%=e.getFullName()%>
+
+                    ${emp.fullName}
+
+                JSTL (Java Standard Tag Library) - core tags
+                ------------------------------------------------------------
+
+                    <c:if test="${ msg!=null }">
+                        <p><strong>${msg}</strong></p>
+                    </c:if>
+
+                    <c:forEach var="e" items="${empList}" >
+                        <p>${e.fullName}</p>
+                    </c:forEach>
+
+                    <c:choose>
+                        <c:when test="${cond1}">
+                            <p>This para is render if cond1 is true</p>
+                        </c:when>
+                        <c:when test="${cond2}">
+                            <p>This para is render if cond2 is true</p>
+                        </c:when>
+                        <c:when test="${cond3}">
+                            <p>This para is render if cond3 is true</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p>This para is render if non of the conditions is true</p>
+                        </c:otherwise>
+                    </c:choose>
+
+        Spring Web MVC
+        ----------------------------------------------------------------------
+
+            Single Fron Controller Design Pattern
+                      
+                      Repo  <---> Service  <---> Controller  <-extracted data--| 
+                      Repo  <---> Service  <---> Controller                    |
+    Database  <--->   Repo  <---> Service  <---> Controller       FrontController <---------REQUEST---------
+                      Repo  <---> Service  <---> Controller                 ↑   |
+                      Repo  <---> Service  <---> Controller  --ModelAndView-|   |
+                                                                                |
+                                                                                |(model)
+                                                                                ↓
+                                                                                View -----RESPONSE---------->
+
+        FrontController?
+            1. org.springframework.....DispatcherServlet
+            2. receive the HttpServletRequest for any URL in the current web app.
+            3. tasks like managing session/ extracting query parameters are all done here..
+            4. the extracted data is passed as params to the underling controller
+            5. once the controller finishs its job, the controller passes the model and viewName
+                to the frontcontroller
+            6. the resultant model is then attached to the request/session .
+            7. the request is forwarded to the respective view refered by the viewName.
+
+        UrlHandlerResolver
+            an interface implemented by
+                ControllerBeanNameUrlHandlerResolver    (depricated in spring 5)
+                SimpleUrlHandlerResolver
+            
+            used by the FrontController (DispatcherServlet) to figure out the controller 
+            related to a particular req. 
+
+                SimpleUrlHandlerResolver        @RequestMapping(url="",method=GET/POST)
+
+        ViewResolver
+            an interface implemented by
+                XmlResourceViewResolver                     .xml        contains viewName and viewPath
+                MessageBundleResourceViewResolver       .properties     contains viewName=viewPath
+                InternalResourceViewResolver            prefix
+                                                        suffix
+
+                                                        viewPath = prefix + viewName + suffix;
+
+            used by the FrontController (DispatcherServlet) to figure out the view related
+            to a viewName.
+
+        View ?
+            any view engine, JSP or Thymeleaf or JSF ..etc
+            we are going to use JSP as the view engine.
+
+        Controller?
+            1. A controller is any POJO (Plain Old Java Object) marked with @Controller.
+            2. A controller must accomidate methods to handle incoming request and return
+                    either a String (viewName) or a ModelAndView object, and these emthods are called actions.
+
+                assuming InternalResourceViewResolver prefix="/page/"   and suffix =".jsp"
+
+                @Controller
+                public class DefaulController {
+
+                    @RequestMapping(value="/home",method=Method.GET)
+                    public String showHomePageAction(){
+                        returns "index";
+                    }
+
+                }
+
+
+                GET http://localhost:8888/home          DefaultController::showHomePageAction() is invoked
+                
+                /pages/index.jsp    will be the response
