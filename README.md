@@ -1281,7 +1281,7 @@ Jdbc
         Spring Web MVC
         ----------------------------------------------------------------------
 
-            Single Fron Controller Design Pattern
+            Single Front Controller Design Pattern
                       
                       Repo  <---> Service  <---> Controller  <-extracted data--| 
                       Repo  <---> Service  <---> Controller                    |
@@ -1350,3 +1350,7 @@ Jdbc
                 GET http://localhost:8888/home          DefaultController::showHomePageAction() is invoked
                 
                 /pages/index.jsp    will be the response
+
+                @RequestMapping
+                    GetMapping
+                    PostMapping ...etc
