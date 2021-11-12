@@ -1354,3 +1354,7 @@ Jdbc
                 @RequestMapping
                     GetMapping
                     PostMapping ...etc
+
+                @RequestParam               map a form / query param with our argument.\
+                @ModelAttribute             map a set of form controls with the fields of a model (object),
+                                            provided the input control names and field names match.
