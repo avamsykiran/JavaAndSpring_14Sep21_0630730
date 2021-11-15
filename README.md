@@ -1346,7 +1346,6 @@ Jdbc
 
                 }
 
-
                 GET http://localhost:8888/home          DefaultController::showHomePageAction() is invoked
                 
                 /pages/index.jsp    will be the response
@@ -1355,6 +1354,6 @@ Jdbc
                     GetMapping
                     PostMapping ...etc
 
-                @RequestParam               map a form / query param with our argument.\
+                @RequestParam               map a form / query param with our argument.
                 @ModelAttribute             map a set of form controls with the fields of a model (object),
                                             provided the input control names and field names match.
