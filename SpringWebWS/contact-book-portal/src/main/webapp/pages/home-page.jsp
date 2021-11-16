@@ -24,11 +24,11 @@
 				<tbody>
 					<c:forEach var="c" items="${contactList }">
 						<tr>
-							<td>{c.cid}</td>
-							<td>{c.fullName}</td>
-							<td>{c.mobile}</td>
-							<td>{c.email}</td>
-							<td>{c.dateOfBirth}</td>
+							<td>${c.cid}</td>
+							<td>${c.fullName}</td>
+							<td>${c.mobile}</td>
+							<td>${c.email}</td>
+							<td>${c.dateOfBirth}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

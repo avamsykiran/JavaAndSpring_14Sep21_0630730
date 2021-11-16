@@ -24,7 +24,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/greet">Greet</a></li>
+					<li class="nav-item"><a class="nav-link" href="/addContact">New Contact</a></li>
 				</ul>
 			</div>
 		</div>

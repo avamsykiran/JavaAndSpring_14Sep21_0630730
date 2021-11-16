@@ -6,6 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 
 @Entity
 @Table(name="contacts")
@@ -13,18 +23,28 @@ public class Contact implements Comparable<Contact> {
 
 	@Id
 	@Column(name="cid")
+	@NotNull(message = "contact id is a mandate field")
+	@Min(value=1,message = "contact id can not be zero or negative")
 	private Long cid;
 	
 	@Column(name="fnm")
+	@NotBlank(message = "Full Name is a mandate field")
 	private String fullName;
 	
-	@Column(name="mob")
+	@Column(name="email")
+	@Email(message = "Email must be a valid one")
+	@NotBlank(message = "Email is a mandate field")
 	private String email;
 	
-	@Column(name="email")
+	@Column(name="mob")
+	@NotBlank(message = "Mobile number is a mandate field")
+	@Pattern(regexp = "[1-9][0-9]{9}",message="Mobile number is a 10 digit number")
 	private String mobile;
 	
 	@Column(name="dob")
+	@NotNull(message = "Birth Date is a mandate field")
+	@Past(message="Birth date can not be a future or present date")
+	@DateTimeFormat(iso=ISO.DATE)
 	private LocalDate dateOfBirth;
 
 	public Contact() {
