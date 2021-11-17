@@ -3,12 +3,12 @@
 <jsp:include page="/header" />
 <div class="container-fluid p-4">
 	<div class="col-sm-5 mx-auto">
-		<h5>New Contact</h5>
+		<h5>${isEditing?"Edit":"New" } Contact</h5>
 		
 		<form:form method="POST" modelAttribute="contact">
 			<div class="mb-2">
 				<form:label path="cid">Contact Id:</form:label>
-				<form:input path="cid" type="number" class="form-control"/>
+				<form:input path="cid" type="number" class="form-control" readonly="${isEditing }"/>
 				<form:errors path="cid" class="form-text" />
 			</div>
 			<div class="mb-2">

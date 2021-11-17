@@ -19,6 +19,7 @@
 						<th>Mobile</th>
 						<th>Email</th>
 						<th>BirthDate</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,6 +30,10 @@
 							<td>${c.mobile}</td>
 							<td>${c.email}</td>
 							<td>${c.dateOfBirth}</td>
+							<td>
+								<a href="/editContact?cid=${c.cid}" class="btn btn-sm btn-secondary">EDIT</a>
+								<a href="/delContact?cid=${c.cid}" class="btn btn-sm btn-danger">DELETE</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

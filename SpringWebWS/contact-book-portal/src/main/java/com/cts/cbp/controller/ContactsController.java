@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cts.cbp.entity.Contact;
@@ -39,6 +40,35 @@ public class ContactsController {
 			mv = new ModelAndView("contact-form-page", "contact", contact);
 		}else {
 			contactService.add(contact);
+			mv = homePageAction();
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("/delContact")
+	public String delContactAction(@RequestParam("cid") Long cid) throws ContactBookException {
+		contactService.deleteById(cid);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/editContact")
+	public ModelAndView showContactFormForEditingAction(@RequestParam("cid") Long cid) throws ContactBookException {
+		ModelAndView mv =new ModelAndView("contact-form-page", "contact", contactService.getById(cid));
+		mv.addObject("isEditing",true);
+		return mv;
+	}
+	
+	@PostMapping("/editContact")
+	public ModelAndView editContactAction(@ModelAttribute("contact") @Valid Contact contact, BindingResult result) throws ContactBookException {
+		
+		ModelAndView mv=null;
+		
+		if(result.hasErrors()) {
+			mv = new ModelAndView("contact-form-page", "contact", contact);
+			mv.addObject("isEditing",true);
+		}else {
+			contactService.modify(contact);
 			mv = homePageAction();
 		}
 		
