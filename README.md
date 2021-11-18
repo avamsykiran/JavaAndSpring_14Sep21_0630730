@@ -1357,3 +1357,69 @@ Jdbc
                 @RequestParam               map a form / query param with our argument.
                 @ModelAttribute             map a set of form controls with the fields of a model (object),
                                             provided the input control names and field names match.
+        
+        Spring REST api
+        ----------------------------------------------------------------------
+
+            REST api?
+
+                REpresentational State Transfer api
+
+                                                            ShopingCartPortal       For Desktop
+              db <--->  WebServices        <------------->  ShopingCartApp          For Andriod
+                  (method accessable over network)          ShopingCartApp          For IOS
+
+                    1. a webservice must be able to transfer data and receive req independent of the technologies
+
+                    SOAP webservices
+                                used XML as communication media over SOAP protocol
+
+                                images/binary files ..etc can not be shared.
+
+                    RESTful webservices
+
+                                used http protocol and http protocol already support a varaity of
+                                media formats like
+                                    JSON
+                                    XML
+                                    IMAGE
+                                    BINARY FILES ...etc
+
+                                use http status codes to communicate the sucessful or error some 
+                                execution of the request.
+
+                                1xx     indicates that the request is received and is under process
+                                2xx     indicates that the reqeust is processed successfully
+                                        200     OK              whenever a retrrival of data is complete
+                                        201     CREATED         whenever an insertion is complete
+                                        203     ACCEPTED        whenever an updatation is complete
+                                        205     NO COMNTENT     whenever a delete is complete
+                                3xx     indicates that the current resposne is being redirected
+                                4xx     indicates that the request could not be processed due to client side error
+                                        400     BAD REQUEST     whenever a operations fails due to insufficeint or 
+                                                                incolrrect data coming from the client
+                                        404     NOT FOUND       whenever a retrival of data fails
+                                5xx     indicates that the request could not be processed due to server side error
+                                        500     internal server error
+                                                                whenever we get an exception thats not ahndled on the
+                                                                server.
+
+                                The url mapped to a method is called REST end point.
+
+                                Assuming we ahve an entity 'Employee', we will create an end point say '/emps'
+
+                                CRUD operation  Http Method  End point        REQ Body    RESP BODY     Http Status
+                                -------------------------------------------------------------------------------------
+                                Retrive            GET     '/emps'             none        [{},()..]        OK
+                                All Employees
+                                Retrive            GET     '/emps/101'         none        {}               OK
+                                Employee By id
+                                Retrive            GET     '/emps/101/skills'  none        [{},()..]        OK
+                                Employee Skills By id
+
+                                Insert  Employee   POST    '/emps'             {}          {}               CREATED
+                                Update  Employee   PUT     '/emps'             {}          {}               ACCEPTED
+                                Delete  Employee   DELETE  '/emps/101'         none        none             NO CONTENT
+
+             
+        
