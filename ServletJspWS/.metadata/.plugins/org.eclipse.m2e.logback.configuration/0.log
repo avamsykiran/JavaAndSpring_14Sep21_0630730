@@ -63,3 +63,8 @@
 2021-11-10 06:58:53,089 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\IIHT\Cognizent\DTP_2021\ongoing\JavaAndSpring_14Sep21_0630730\ServletJspWS\DynamicWebApp1\src\main\resources
 2021-11-10 06:58:53,091 [Worker-15: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2021-11-10 06:58:53,094 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\IIHT\Cognizent\DTP_2021\ongoing\JavaAndSpring_14Sep21_0630730\ServletJspWS\DynamicWebApp1\src\test\resources
+2021-11-19 16:35:03,085 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2021-11-19 16:35:26,593 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-19 16:35:26,596 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\IIHT\Cognizent\DTP_2021\ongoing\JavaAndSpring_14Sep21_0630730\ServletJspWS\DynamicWebApp1\src\main\resources
+2021-11-19 16:35:26,601 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-19 16:35:26,603 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\IIHT\Cognizent\DTP_2021\ongoing\JavaAndSpring_14Sep21_0630730\ServletJspWS\DynamicWebApp1\src\test\resources

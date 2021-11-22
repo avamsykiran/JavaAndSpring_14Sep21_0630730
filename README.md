@@ -1409,7 +1409,7 @@ Jdbc
                                 Assuming we ahve an entity 'Employee', we will create an end point say '/emps'
 
                                 CRUD operation  Http Method  End point        REQ Body    RESP BODY     Http Status
-                                -------------------------------------------------------------------------------------
+                                ------------------------------------------------------------------------------------
                                 Retrive            GET     '/emps'             none        [{},()..]        OK
                                 All Employees
                                 Retrive            GET     '/emps/101'         none        {}               OK
@@ -1421,5 +1421,7 @@ Jdbc
                                 Update  Employee   PUT     '/emps'             {}          {}               ACCEPTED
                                 Delete  Employee   DELETE  '/emps/101'         none        none             NO CONTENT
 
-             
+                                @RestController     =       @Controller + @ResponeBody     
+                                @RequestBody
+                                @PathVariable
         
